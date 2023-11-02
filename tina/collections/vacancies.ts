@@ -62,7 +62,6 @@ export const vacancies: FieldCollection = {
 			type: "datetime",
 			label: "Published date",
 			name: "pubDate",
-			required: true,
 			ui: {
 				timeFormat: "MM.DD.YYYY HH:mm",
 			},
