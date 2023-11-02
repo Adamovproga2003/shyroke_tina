@@ -46,7 +46,6 @@ interface ICard {
 	isNews?: boolean
 	category?: string | undefined | null
 	isLoading: boolean
-	finishDays?: Maybe<number> | undefined
 }
 
 const Card: FC<ICard> = ({
@@ -59,7 +58,6 @@ const Card: FC<ICard> = ({
 	isLoading,
 	isAnnouncement = false,
 	isNews = false,
-	finishDays,
 }) => {
 	const router = useRouter()
 	const { description, pubDate, image, title, url } = data
@@ -78,16 +76,11 @@ const Card: FC<ICard> = ({
 	const [dimensions] = useImageSize(image as string)
 
 	useEffect(() => {
-		if (pubDate && finishDays) {
+		if (pubDate) {
 			const config = {
 				name: `[Reminder] ${title}`,
 				startDate: format(new Date(pubDate), "yyyy-MM-dd"),
 				startTime: format(new Date(pubDate), "HH:mm"),
-				endDate: format(
-					new Date(addOneDay(new Date(pubDate), finishDays)),
-					"yyyy-MM-dd"
-				),
-				endTime: "23:59",
 				options: ["Google", "Apple", "Outlook.com", "Yahoo", "MicrosoftTeams"],
 				timeZone: "Europe/Kyiv",
 			}
