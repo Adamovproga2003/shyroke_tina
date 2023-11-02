@@ -1,0 +1,8 @@
+.form {
+  display: flex;
+  gap: 25px;
+  &__button {
+    height: fit-content;
+    margin-top: 36.6px;
+  }
+}
